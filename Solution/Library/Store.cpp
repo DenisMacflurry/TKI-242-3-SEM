@@ -27,7 +27,7 @@ shared_ptr<Sale> Store::makePurchase(const string& customerName,
         return nullptr;
     }
     
-    auto sale = make_shared<Sale>(customerName, date);
+    auto sale = make_shared<Sale>(customer, date);
     
     for (const auto& item : items) {
         auto product = database.findProductByName(item.first);

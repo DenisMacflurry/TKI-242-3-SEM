@@ -1,7 +1,7 @@
 #include "../include/Sale.h"
 
-Sale::Sale(const string& customerName, const string& date)
-    : customerName(customerName), totalAmount(0.0), discount(0.0), 
+Sale::Sale(shared_ptr<Customer> customer, const string& date)
+    : customer(customer), totalAmount(0.0), discount(0.0), 
       finalAmount(0.0), date(date) {}
 
 void Sale::addItem(shared_ptr<Product> product, int quantity) {
@@ -18,8 +18,8 @@ void Sale::calculateTotal(double discountRate) {
     finalAmount = totalAmount - discount;
 }
 
-string Sale::getCustomerName() const {
-    return customerName;
+shared_ptr<Customer> Sale::getCustomer() const {
+    return customer;
 }
 
 double Sale::getTotalAmount() const {

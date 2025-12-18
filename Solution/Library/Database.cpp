@@ -62,10 +62,10 @@ vector<shared_ptr<Sale>> Database::getSalesByPeriod(const string& startDate, con
     return result;
 }
 
-vector<shared_ptr<Sale>> Database::getSalesByCustomer(const string& customerName) const {
+vector<shared_ptr<Sale>> Database::getSalesByCustomer(shared_ptr<Customer> customer) const {
     vector<shared_ptr<Sale>> result;
     for (const auto& sale : sales) {
-        if (sale->getCustomerName() == customerName) {
+        if (sale->getCustomer() == customer) {
             result.push_back(sale);
         }
     }

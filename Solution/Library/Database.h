@@ -1,5 +1,4 @@
 #pragma once
-
 #include <vector>
 #include <memory>
 #include <string>
@@ -29,5 +28,5 @@ public:
     vector<shared_ptr<Product>> findProductsByManufacturer(const string& manufacturer) const;
     
     vector<shared_ptr<Sale>> getSalesByPeriod(const string& startDate, const string& endDate) const;
-    vector<shared_ptr<Sale>> getSalesByCustomer(const string& customerName) const;
+    vector<shared_ptr<Sale>> getSalesByCustomer(shared_ptr<Customer> customer) const;
 };

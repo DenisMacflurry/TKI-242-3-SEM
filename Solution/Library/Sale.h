@@ -9,7 +9,7 @@ using namespace std;
 
 class Sale {
 private:
-    string customerName;
+    shared_ptr<Customer> customer;
     vector<pair<shared_ptr<Product>, int>> items;
     double totalAmount;
     double discount;
@@ -17,12 +17,12 @@ private:
     string date;
 
 public:
-    Sale(const string& customerName, const string& date);
+    Sale(shared_ptr<Customer> customer, const string& date);
     
     void addItem(shared_ptr<Product> product, int quantity);
     void calculateTotal(double discountRate);
     
-    string getCustomerName() const;
+    shared_ptr<Customer> getCustomer() const;
     double getTotalAmount() const;
     double getDiscount() const;
     double getFinalAmount() const;

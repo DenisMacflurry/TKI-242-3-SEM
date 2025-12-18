@@ -44,7 +44,7 @@ int main() {
     
     auto sale1 = store.makePurchase("Иванов Иван", purchase1, "2024-01-15");
     if (sale1) {
-        cout << "Клиент: " << sale1->getCustomerName() << endl;
+        cout << "Клиент: " << sale1->getCustomer()->getName() << endl;
         cout << "Сумма до скидки: " << sale1->getTotalAmount() << " руб." << endl;
         cout << "Скидка: " << sale1->getDiscount() << " руб." << endl;
         cout << "Итого к оплате: " << sale1->getFinalAmount() << " руб." << endl;
@@ -56,7 +56,7 @@ int main() {
     
     auto sale2 = store.makePurchase("Петров Петр", purchase2, "2024-01-20");
     if (sale2) {
-        cout << "Клиент: " << sale2->getCustomerName() << endl;
+        cout << "Клиент: " << sale2->getCustomer()->getName() << endl;
         cout << "Сумма до скидки: " << sale2->getTotalAmount() << " руб." << endl;
         cout << "Скидка: " << sale2->getDiscount() << " руб." << endl;
         cout << "Итого к оплате: " << sale2->getFinalAmount() << " руб." << endl;
@@ -69,7 +69,7 @@ int main() {
     
     auto sale3 = store.makePurchase("Сидорова Анна", purchase3, "2024-01-25");
     if (sale3) {
-        cout << "Клиент: " << sale3->getCustomerName() << endl;
+        cout << "Клиент: " << sale3->getCustomer()->getName() << endl;
         cout << "Сумма до скидки: " << sale3->getTotalAmount() << " руб." << endl;
         cout << "Скидка: " << sale3->getDiscount() << " руб." << endl;
         cout << "Итого к оплате: " << sale3->getFinalAmount() << " руб." << endl;

@@ -35,8 +35,9 @@ TEST(CustomerTest, SetRegular) {
 TEST(SaleTest, AddItemsAndCalculate) {
     auto product1 = make_shared<Printer>("Printer1", "HP", 10000.0, 30);
     auto product2 = make_shared<Scanner>("Scanner1", "Canon", 5000.0, 600);
+    auto customer = make_shared<Customer>("Customer1", false);
     
-    Sale sale("Customer1", "2024-01-15");
+    Sale sale(customer, "2024-01-15");
     sale.addItem(product1, 2);
     sale.addItem(product2, 1);
     sale.calculateTotal(0.1);
@@ -44,6 +45,7 @@ TEST(SaleTest, AddItemsAndCalculate) {
     EXPECT_EQ(sale.getTotalAmount(), 25000.0);
     EXPECT_EQ(sale.getDiscount(), 2500.0);
     EXPECT_EQ(sale.getFinalAmount(), 22500.0);
+    EXPECT_EQ(sale.getCustomer()->getName(), "Customer1");
 }
 
 TEST(DatabaseTest, AddAndFindProduct) {
@@ -79,11 +81,13 @@ TEST(DatabaseTest, AddAndFindCustomer) {
 TEST(DatabaseTest, GetSalesByPeriod) {
     Database db;
     auto product = make_shared<Printer>("Printer1", "HP", 10000.0, 30);
+    auto customer = make_shared<Customer>("Customer1", false);
     db.addProduct(product);
+    db.addCustomer(customer);
     
-    auto sale1 = make_shared<Sale>("Customer1", "2024-01-15");
-    auto sale2 = make_shared<Sale>("Customer2", "2024-02-15");
-    auto sale3 = make_shared<Sale>("Customer3", "2024-01-25");
+    auto sale1 = make_shared<Sale>(customer, "2024-01-15");
+    auto sale2 = make_shared<Sale>(customer, "2024-02-15");
+    auto sale3 = make_shared<Sale>(customer, "2024-01-25");
     
     db.addSale(sale1);
     db.addSale(sale2);
